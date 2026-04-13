@@ -11,7 +11,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-40 pb-20 bg-navy overflow-hidden">
+      <section data-review-section="hero" className="review-note relative pt-40 pb-20 bg-navy overflow-hidden">
         <div className="absolute inset-0 texture-overlay opacity-30" />
         <div className="absolute top-1/3 left-1/4 w-72 h-72 rounded-full bg-gold/5 blur-3xl" />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
@@ -28,7 +28,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact content */}
-      <section className="py-20 bg-warm-white">
+      <section data-review-section="contact-form" className="review-note py-20 bg-warm-white">
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
             {/* Left: Contact Info */}

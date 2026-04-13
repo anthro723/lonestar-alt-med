@@ -11,7 +11,7 @@ export default function WhatToExpectPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-40 pb-20 bg-navy overflow-hidden">
+      <section data-review-section="hero" className="review-note relative pt-40 pb-20 bg-navy overflow-hidden">
         <div className="absolute inset-0 texture-overlay opacity-30" />
         <div className="absolute top-1/2 left-1/4 w-72 h-72 rounded-full bg-gold/5 blur-3xl" />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
@@ -28,7 +28,7 @@ export default function WhatToExpectPage() {
       </section>
 
       {/* Process */}
-      <section className="py-20 bg-warm-white">
+      <section data-review-section="process-steps" className="review-note py-20 bg-warm-white">
         <div className="max-w-4xl mx-auto px-6">
           {/* Step 1 */}
           <div className="relative pl-16 pb-16 border-l-2 border-gold/20 ml-6">
@@ -154,7 +154,7 @@ export default function WhatToExpectPage() {
       </section>
 
       {/* Pricing summary */}
-      <section className="py-16 bg-cream">
+      <section data-review-section="pricing-summary" className="review-note py-16 bg-cream">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="font-heading text-3xl text-navy mb-8">Simple, Transparent Pricing</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">

@@ -116,7 +116,7 @@ export default function Home() {
   return (
     <>
       {/* ═══════════════ HERO ═══════════════ */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section data-review-section="hero" className="review-note relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-navy-dark">
           <div className="absolute inset-0 hero-gradient" />
@@ -191,7 +191,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════ SERVICES ═══════════════ */}
-      <section className="py-24 bg-warm-white">
+      <section data-review-section="services-grid" className="review-note py-24 bg-warm-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-gold text-sm tracking-[0.2em] uppercase mb-3">Our Expertise</p>
@@ -237,7 +237,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════ WHY CHOOSE US ═══════════════ */}
-      <section className="py-24 bg-navy relative overflow-hidden">
+      <section data-review-section="why-choose-us" className="review-note py-24 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 texture-overlay opacity-30" />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -261,7 +261,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════ ABOUT PREVIEW ═══════════════ */}
-      <section className="py-24 bg-cream">
+      <section data-review-section="about-preview" className="review-note py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left: decorative visual */}
@@ -307,7 +307,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════ PROCESS PREVIEW ═══════════════ */}
-      <section className="py-24 bg-warm-white">
+      <section data-review-section="process-preview" className="review-note py-24 bg-warm-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="text-gold text-sm tracking-[0.2em] uppercase mb-3">Simple Process</p>
           <h2 className="font-heading text-4xl md:text-5xl text-navy mb-4">

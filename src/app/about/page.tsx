@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-40 pb-20 bg-navy overflow-hidden">
+      <section data-review-section="hero" className="review-note relative pt-40 pb-20 bg-navy overflow-hidden">
         <div className="absolute inset-0 texture-overlay opacity-30" />
         <div className="absolute bottom-1/3 right-1/3 w-96 h-96 rounded-full bg-gold/5 blur-3xl" />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
@@ -28,7 +28,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section className="py-20 bg-warm-white">
+      <section data-review-section="about-mission" className="review-note py-20 bg-warm-white">
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -77,7 +77,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-cream">
+      <section data-review-section="about-values" className="review-note py-20 bg-cream">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-gold text-sm tracking-[0.2em] uppercase mb-3">Our Values</p>
@@ -118,7 +118,7 @@ export default function AboutPage() {
       </section>
 
       {/* Conditions */}
-      <section className="py-20 bg-navy relative overflow-hidden">
+      <section data-review-section="conditions-we-treat" className="review-note py-20 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 texture-overlay opacity-20" />
         <div className="relative z-10 max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -169,7 +169,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-warm-white">
+      <section data-review-section="cta-section" className="review-note py-20 bg-warm-white">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="font-heading text-4xl text-navy mb-4">
             Ready to Take the First Step?

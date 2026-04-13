@@ -11,7 +11,7 @@ export default function TelemedicinePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-40 pb-20 bg-navy overflow-hidden">
+      <section data-review-section="hero" className="review-note relative pt-40 pb-20 bg-navy overflow-hidden">
         <div className="absolute inset-0 texture-overlay opacity-30" />
         <div className="absolute bottom-1/4 left-1/3 w-80 h-80 rounded-full bg-gold/5 blur-3xl" />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
@@ -28,7 +28,7 @@ export default function TelemedicinePage() {
       </section>
 
       {/* Main content */}
-      <section className="py-20 bg-warm-white">
+      <section data-review-section="telemedicine-details" className="review-note py-20 bg-warm-white">
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Left: Info */}
@@ -130,7 +130,7 @@ export default function TelemedicinePage() {
       </section>
 
       {/* Benefits band */}
-      <section className="py-16 bg-navy relative overflow-hidden">
+      <section data-review-section="telemedicine-benefits" className="review-note py-16 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 texture-overlay opacity-20" />
         <div className="relative z-10 max-w-5xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">

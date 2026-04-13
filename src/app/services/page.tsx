@@ -126,7 +126,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-40 pb-20 bg-navy overflow-hidden">
+      <section data-review-section="hero" className="review-note relative pt-40 pb-20 bg-navy overflow-hidden">
         <div className="absolute inset-0 texture-overlay opacity-30" />
         <div className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-gold/5 blur-3xl" />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
@@ -143,7 +143,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services */}
-      <section className="py-20 bg-warm-white">
+      <section data-review-section="services-list" className="review-note py-20 bg-warm-white">
         <div className="max-w-5xl mx-auto px-6">
           {services.map((service, i) => (
             <div
@@ -188,7 +188,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Pricing Banner */}
-      <section className="py-16 bg-cream">
+      <section data-review-section="pricing-banner" className="review-note py-16 bg-cream">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-heading text-3xl text-navy mb-4">Transparent Pricing</h2>
           <div className="star-divider max-w-xs mx-auto mb-8">
