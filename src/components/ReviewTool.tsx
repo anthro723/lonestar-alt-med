@@ -58,23 +58,64 @@ export function ReviewTool() {
   const [viewingImage, setViewingImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const [saveStatus, setSaveStatus] = useState<string>("");
+  const saveTimer = useRef<NodeJS.Timeout | null>(null);
+
+  // Load from cloud on startup, fall back to localStorage
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem("lam-review-comments");
-      if (saved) setComments(JSON.parse(saved));
+    async function loadReviews() {
+      try {
+        const res = await fetch("/api/reviews");
+        const data = await res.json();
+        if (data.comments && data.comments.length > 0) {
+          setComments(data.comments);
+          setSaveStatus("Loaded from cloud");
+        } else {
+          // Fall back to localStorage
+          const saved = localStorage.getItem("lam-review-comments");
+          if (saved) setComments(JSON.parse(saved));
+        }
+      } catch {
+        const saved = localStorage.getItem("lam-review-comments");
+        if (saved) setComments(JSON.parse(saved));
+      }
       const name = localStorage.getItem("lam-reviewer-name");
       if (name) setAuthorName(name);
-    } catch {}
+    }
+    loadReviews();
   }, []);
 
+  // Auto-save to cloud (debounced) + localStorage on every change
   useEffect(() => {
     try {
       localStorage.setItem("lam-review-comments", JSON.stringify(comments));
-    } catch (e) {
-      // localStorage might be full with images — warn user
-      console.warn("Could not save — storage may be full");
-    }
-  }, [comments]);
+    } catch {}
+
+    // Debounce cloud save by 2 seconds
+    if (saveTimer.current) clearTimeout(saveTimer.current);
+    if (comments.length === 0 && !saveStatus) return; // Don't save empty on initial load
+
+    saveTimer.current = setTimeout(async () => {
+      try {
+        setSaveStatus("Saving...");
+        const res = await fetch("/api/reviews", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ comments, author: authorName || "Reviewer" }),
+        });
+        const data = await res.json();
+        if (data.ok) {
+          setSaveStatus(`Saved (${data.commentCount} notes, ${data.imageCount} photos)`);
+        } else {
+          setSaveStatus("Save failed — using local backup");
+        }
+      } catch {
+        setSaveStatus("Offline — saved locally");
+      }
+    }, 2000);
+
+    return () => { if (saveTimer.current) clearTimeout(saveTimer.current); };
+  }, [comments, authorName, saveStatus]);
 
   useEffect(() => {
     document.body.classList.toggle("review-mode", reviewMode);
@@ -220,7 +261,7 @@ h1{color:#1a2332}h2{color:#b8860b;border-bottom:1px solid #eee;padding-bottom:8p
           <div className="px-4 py-3 text-white flex justify-between items-center" style={{ backgroundColor: "#1a2332" }}>
             <div>
               <div className="font-bold text-sm">Website Review Tool</div>
-              <div className="text-xs text-white/70">{commentCount} comments{imageCount > 0 && `, ${imageCount} photos`}</div>
+              <div className="text-xs text-white/70">{commentCount} comments{imageCount > 0 && `, ${imageCount} photos`} {saveStatus && `\u2022 ${saveStatus}`}</div>
             </div>
             <div className="flex items-center gap-2">
               <button
